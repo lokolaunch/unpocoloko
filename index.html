@@ -4,10 +4,10 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Taco Tuesyay!</title>
-
 <link href="https://fonts.googleapis.com/css2?family=Bangers&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
 
 <style>
+/* ─── RESET & VARIABLES ─── */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -16,140 +16,206 @@
 
 :root {
   --gold: #d4a843;
-  --gold-dim: rgba(212,168,67,.35);
-  --black: #000;
+  --gold-dim: rgba(212, 168, 67, 0.35);
+  --black: #000000;
   --white: #f0ece4;
   --cream: #c9c0a8;
+  --gold-glow: rgba(212, 168, 67, 0.18);
   --font-display: 'Bangers', cursive;
   --font-body: 'DM Sans', sans-serif;
 }
+
+html { scroll-behavior: smooth; }
 
 body {
   background: var(--black);
   color: var(--white);
   font-family: var(--font-body);
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
 }
 
+/* ─── GRAIN ─── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 999;
+  opacity: 0.6;
+}
+
+/* ─── LAYOUT ─── */
 .page {
   max-width: 1100px;
-  margin: auto;
+  margin: 0 auto;
   padding: 48px 24px 72px;
+  position: relative;
+  z-index: 1;
 }
 
-/* TOP */
-.top {
-  text-align: center;
-  margin-bottom: 48px;
-}
+/* ─── TOP ─── */
+.top { text-align: center; margin-bottom: 48px; }
+
+.logo-wrap { margin-bottom: 28px; }
 
 .logo-wrap img {
   width: 190px;
-  margin-bottom: 24px;
+  display: block;
+  margin: 0 auto;
 }
 
+/* ─── TITLE ─── */
 .title-line {
   font-family: var(--font-display);
-  font-size: clamp(56px, 10vw, 88px);
+  font-size: clamp(52px, 10vw, 88px);
+  letter-spacing: 2px;
+  line-height: 1.05;
   text-transform: uppercase;
+  margin-bottom: 6px;
 }
 
-.taco { color: var(--white); }
-.tuesyay { color: var(--gold); }
+.title-line .taco {
+  color: var(--white);
+  display: inline-block;
+  animation: tiltBob 3s ease-in-out infinite;
+}
+
+.title-line .tuesyay {
+  color: var(--gold);
+  display: inline-block;
+  animation: tiltBob 3s ease-in-out 0.35s infinite;
+}
 
 .title-sub {
+  font-size: clamp(16px, 3.2vw, 22px);
+  font-weight: 500;
   color: var(--cream);
   letter-spacing: 3px;
-  margin-top: 8px;
+  text-transform: uppercase;
+  opacity: 0.82;
+  margin-top: 10px;
+  animation: fadeUp 0.9s cubic-bezier(0.22,1,0.36,1) 0.3s both;
 }
 
-/* MENU */
+@keyframes tiltBob {
+  0%,100% { transform: translateY(0) rotate(0); }
+  30% { transform: translateY(-5px) rotate(-1.2deg); }
+  60% { transform: translateY(-2px) rotate(0.8deg); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 0.82; transform: translateY(0); }
+}
+
+/* ─── MENU ─── */
+.menu { text-align: center; margin-bottom: 36px; }
+
 .menu-row {
   display: flex;
-  gap: 18px;
   justify-content: center;
-  margin-bottom: 18px;
+  gap: 18px;
   flex-wrap: wrap;
+  margin-bottom: 22px;
 }
+
+.row-1, .row-2 { flex-wrap: nowrap; }
 
 .menu-img {
   border: 2px solid var(--gold);
-  max-width: 300px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 14px var(--gold-glow);
+  transition: transform .35s, box-shadow .35s;
+}
+
+.menu-img:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 24px var(--gold-dim);
 }
 
 .menu-img img {
   width: 100%;
+  height: auto;
   display: block;
 }
 
-/* INFO LINE */
+/* ─── INFO LINE ─── */
 .info-line {
   text-align: center;
+  font-size: 15px;
   color: var(--cream);
-  margin: 48px 0;
-  letter-spacing: 2px;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  opacity: .75;
+  margin-bottom: 52px;
+  padding: 14px 0;
   border-top: 1px solid var(--gold-dim);
   border-bottom: 1px solid var(--gold-dim);
-  padding: 14px 0;
 }
 
-/* PREORDER BOX */
-.main-row {
-  display: flex;
-  justify-content: center;
-}
+/* ─── PREORDER BOX (EDITED CONTENT ONLY) ─── */
+.main-row { display: flex; justify-content: center; }
 
 .preorder-box {
-  max-width: 800px;
   width: 100%;
+  max-width: 800px;
   border: 2px solid var(--gold);
+  background: var(--black);
+  box-shadow: 0 0 20px var(--gold-glow);
   padding: 32px 36px;
 }
 
 .preorder-box h2 {
-  text-align: center;
   font-family: var(--font-display);
+  font-size: 26px;
   color: var(--gold);
-  margin-bottom: 6px;
+  text-align: center;
 }
 
 .sub-tag {
-  text-align: center;
   font-size: 12px;
   color: var(--cream);
-  opacity: .7;
-  margin-bottom: 16px;
-}
-
-.how-it-works {
+  opacity: .6;
   text-align: center;
-  font-size: 13px;
-  color: var(--cream);
   margin-bottom: 20px;
 }
 
-/* CLEAN ALIGNMENT */
-.fields {
-  list-style: none;
-  display: grid;
-  grid-template-columns: 150px 1fr;
-  row-gap: 10px;
-  column-gap: 14px;
-  margin-bottom: 22px;
+.how-it-works {
+  font-size: 13px;
+  color: var(--cream);
+  opacity: .7;
+  margin-bottom: 16px;
+  text-align: center;
+  font-style: italic;
 }
 
-.fields .label {
+.fields {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.fields li {
+  display: flex;
+  gap: 12px;
+  font-size: 15px;
+}
+
+.label {
+  min-width: 140px;
   color: var(--gold);
   font-size: 13px;
   text-transform: uppercase;
   font-weight: 600;
 }
 
-.fields .desc {
-  color: var(--cream);
-  font-size: 14px;
-}
+.desc { color: var(--cream); font-size: 14px; }
 
-/* NOTES */
 .divider {
   height: 1px;
   background: var(--gold-dim);
@@ -160,52 +226,25 @@ body {
   text-align: center;
   font-size: 13px;
   color: var(--cream);
-  line-height: 1.6;
+  opacity: .6;
 }
 
-.note strong {
-  color: var(--gold);
-}
-
-/* DM SECTION */
+/* ─── DM ─── */
 .dm-section {
+  margin-top: 10px;
   text-align: center;
-  margin-top: 18px;
 }
 
 .dm-links {
   display: flex;
+  gap: 16px;
   justify-content: center;
-  gap: 18px;
-  margin-top: 12px;
 }
 
-.dm-icon {
-  width: 44px;
-  height: 44px;
-  border: 1.5px solid var(--gold);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform .25s ease, box-shadow .25s ease;
-}
-
-.dm-icon:hover {
-  transform: scale(1.12);
-  box-shadow: 0 0 14px rgba(212,168,67,.4);
-}
-
-.dm-icon svg {
-  width: 22px;
-  height: 22px;
-}
-
-/* MOBILE */
+/* ─── MOBILE ─── */
 @media (max-width: 720px) {
-  .fields {
-    grid-template-columns: 120px 1fr;
-  }
+  .preorder-box { padding: 24px 20px; }
+  .label { min-width: 110px; font-size: 12px; }
 }
 </style>
 </head>
@@ -214,30 +253,12 @@ body {
 <div class="page">
 
 <section class="top">
-  <div class="logo-wrap">
-    <img src="logo.png" alt="Sira Ulo Kitchen">
-  </div>
-  <h1 class="title-line">
-    <span class="taco">Taco</span> <span class="tuesyay">Tuesyay!</span>
-  </h1>
+  <div class="logo-wrap"><img src="logo.png"></div>
+  <h1 class="title-line"><span class="taco">Taco</span> <span class="tuesyay">Tuesyay!</span></h1>
   <p class="title-sub">Order Now</p>
 </section>
 
-<section class="menu">
-  <div class="menu-row">
-    <div class="menu-img"><img src="men1.jpeg"></div>
-    <div class="menu-img"><img src="men2.jpeg"></div>
-    <div class="menu-img"><img src="men3.jpeg"></div>
-  </div>
-  <div class="menu-row">
-    <div class="menu-img"><img src="men4.jpeg"></div>
-    <div class="menu-img"><img src="men5.jpeg"></div>
-  </div>
-</section>
-
-<div class="info-line">
-  Order Cutoff: Sunday 10 PM &bull; Tuesday Delivery Only
-</div>
+<div class="info-line">Order Cutoff: Sunday 10 PM • Tuesday Delivery Only</div>
 
 <div class="main-row">
 <div class="preorder-box">
@@ -245,67 +266,22 @@ body {
 <h2>Taco Tuesday Pre-Order</h2>
 <p class="sub-tag">Pre-order only · Payment required</p>
 
-<p class="how-it-works">
-DM us with the following details.  
-<strong>You book the delivery.</strong>
-</p>
+<p class="how-it-works">DM us with the following details. You book the delivery.</p>
 
 <ul class="fields">
-  <li class="label">Name</li><li class="desc">Full name</li>
-  <li class="label">Mobile</li><li class="desc">Contact number</li>
-  <li class="label">Order</li><li class="desc">Menu item + quantity</li>
-  <li class="label">Delivery Time</li><li class="desc">Preferred time on Tuesday</li>
-  <li class="label">Delivery Method</li><li class="desc">Grab / Lalamove / Pick-up</li>
-  <li class="label">Tracking No.</li><li class="desc">If already available</li>
-  <li class="label">Payment</li><li class="desc">Required upon ordering</li>
-  <li class="label">Proof</li><li class="desc">Screenshot of payment</li>
+  <li><span class="label">Name</span><span class="desc">Full name</span></li>
+  <li><span class="label">Mobile</span><span class="desc">Contact number</span></li>
+  <li><span class="label">Order</span><span class="desc">Menu item + quantity</span></li>
+  <li><span class="label">Delivery Time</span><span class="desc">Preferred Tuesday time</span></li>
+  <li><span class="label">Delivery Method</span><span class="desc">Grab / Lalamove / Pick-up</span></li>
+  <li><span class="label">Tracking No.</span><span class="desc">If already available</span></li>
+  <li><span class="label">Payment</span><span class="desc">Required upon order</span></li>
+  <li><span class="label">Proof</span><span class="desc">Screenshot of payment</span></li>
 </ul>
 
 <div class="divider"></div>
 
-<p class="note">
-<strong>Orders are confirmed only after payment.</strong><br>
-Cutoff is strictly Sunday 10 PM.
-</p>
-
-<div class="divider"></div>
-
-<div class="dm-section">
-<span class="dm-label">DM us here →</span>
-
-<div class="dm-links">
-
-<!-- TikTok -->
-<a class="dm-icon" href="https://www.tiktok.com/@sira.ulo.kitchen" target="_blank" title="TikTok">
-<svg viewBox="0 0 24 24" fill="#ffffff">
-<path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.27 6.27 0 00-6.27 6.27 6.27 6.27 0 006.27 6.27 6.27 6.27 0 006.27-6.27V8.92a8.16 8.16 0 004.83 1.57V7.06a4.83 4.83 0 01-1-.37z"/>
-</svg>
-</a>
-
-<!-- WhatsApp -->
-<a class="dm-icon" href="https://wa.me/639602735577" target="_blank" title="WhatsApp">
-<svg viewBox="0 0 24 24">
-<path fill="#25D366" d="M20.04 4.96A10.01 10.01 0 0012 2 9.96 9.96 0 002.01 12c0 1.76.46 3.4 1.34 4.85L2 22l5.3-1.39A9.93 9.93 0 0012 22c5.52 0 10-4.48 10-10 0-2.67-1.04-5.18-2.96-7.04z"/>
-<path fill="#ffffff" d="M16.56 14.12c-.24-.12-1.4-.69-1.62-.77-.21-.08-.37-.12-.52.13-.16.24-.61.77-.75.92-.14.15-.27.17-.5.06-.24-.12-1-.37-1.91-.91-.71-.48-1.19-1.07-1.33-1.25-.14-.18-.01-.28.1-.37.1-.08.23-.21.34-.32.11-.11.15-.18.23-.35.08-.17.04-.31-.02-.43-.06-.12-.52-1.25-.71-1.71-.19-.45-.38-.39-.52-.4h-.45c-.15 0-.39.06-.59.28-.2.23-.77.75-.77 1.83s.8 2.13.91 2.28c.11.15 1.6 2.45 3.88 3.44 2.28.99 2.28.66 2.69.64.4-.02 1.3-.53 1.49-1.04.18-.51.18-.94.13-1.04-.06-.1-.22-.16-.46-.28z"/>
-</svg>
-</a>
-
-<!-- Messenger → TikTok -->
-<a class="dm-icon" href="https://www.tiktok.com/@sira.ulo.kitchen" target="_blank" title="Messenger">
-<svg viewBox="0 0 24 24">
-<defs>
-<linearGradient id="msgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-<stop offset="0%" stop-color="#00B2FF"/>
-<stop offset="100%" stop-color="#006AFF"/>
-</linearGradient>
-</defs>
-<path fill="url(#msgGrad)" d="M12 2C6.48 2 2 6.48 2 12c0 2.88 1.33 5.47 3.4 7.17V22l2.05-1.12C8.87 21.59 10.41 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2z"/>
-<path fill="#ffffff" d="M13.12 15.28L10.6 12.6 5.6 15.28l5.5-5.84 2.6 2.68 4.9-2.68-5.48 5.84z"/>
-</svg>
-</a>
-
-</div>
-</div>
+<p class="note"><strong>Orders confirmed only after payment.</strong></p>
 
 </div>
 </div>
