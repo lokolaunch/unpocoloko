@@ -1,1 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Taco Tuesyay!</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+
+<style>
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --gold: #d4a843;
+  --gold-dim: rgba(212,168,67,.35);
+  --black: #000;
+  --white: #f0ece4;
+  --cream: #c9c0a8;
+  --font-display: 'Bangers', cursive;
+  --font-body: 'DM Sans', sans-serif;
+}
+
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: var(--font-body);
+}
+
+.page {
+  max-width: 1100px;
+  margin: auto;
+  padding: 48px 24px 72px;
+}
+
+/* TOP */
+.top {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.logo-wrap img {
+  width: 190px;
+  margin-bottom: 24px;
+}
+
+.title-line {
+  font-family: var(--font-display);
+  font-size: clamp(56px, 10vw, 88px);
+  text-transform: uppercase;
+}
+
+.taco { color: var(--white); }
+.tuesyay { color: var(--gold); }
+
+.title-sub {
+  color: var(--cream);
+  letter-spacing: 3px;
+  margin-top: 8px;
+}
+
+/* MENU */
+.menu-row {
+  display: flex;
+  gap: 18px;
+  justify-content: center;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+
+.menu-img {
+  border: 2px solid var(--gold);
+  max-width: 300px;
+}
+
+.menu-img img {
+  width: 100%;
+  display: block;
+}
+
+/* INFO LINE */
+.info-line {
+  text-align: center;
+  color: var(--cream);
+  margin: 48px 0;
+  letter-spacing: 2px;
+  border-top: 1px solid var(--gold-dim);
+  border-bottom: 1px solid var(--gold-dim);
+  padding: 14px 0;
+}
+
+/* PREORDER BOX */
+.main-row {
+  display: flex;
+  justify-content: center;
+}
+
+.preorder-box {
+  max-width: 800px;
+  width: 100%;
+  border: 2px solid var(--gold);
+  padding: 32px 36px;
+}
+
+.preorder-box h2 {
+  text-align: center;
+  font-family: var(--font-display);
+  color: var(--gold);
+  margin-bottom: 6px;
+}
+
+.sub-tag {
+  text-align: center;
+  font-size: 12px;
+  color: var(--cream);
+  opacity: .7;
+  margin-bottom: 16px;
+}
+
+.how-it-works {
+  text-align: center;
+  font-size: 13px;
+  color: var(--cream);
+  margin-bottom: 20px;
+}
+
+/* FIXED ALIGNMENT */
+.fields {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  row-gap: 10px;
+  column-gap: 14px;
+  margin-bottom: 22px;
+}
+
+.fields .label {
+  color: var(--gold);
+  font-size: 13px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.fields .desc {
+  color: var(--cream);
+  font-size: 14px;
+}
+
+/* NOTES */
+.divider {
+  height: 1px;
+  background: var(--gold-dim);
+  margin: 16px 0;
+}
+
+.note {
+  text-align: center;
+  font-size: 13px;
+  color: var(--cream);
+  line-height: 1.6;
+}
+
+.note strong {
+  color: var(--gold);
+}
+
+/* DM SECTION */
+.dm-section {
+  text-align: center;
+  margin-top: 18px;
+}
+
+.dm-links {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 10px;
+}
+
+.dm-icon {
+  width: 42px;
+  height: 42px;
+  border: 1.5px solid var(--gold);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dm-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* MOBILE */
+@media (max-width: 720px) {
+  .fields {
+    grid-template-columns: 110px 1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+<div class="page">
+
+<section class="top">
+  <div class="logo-wrap">
+    <img src="logo.png" alt="Sira Ulo Kitchen">
+  </div>
+  <h1 class="title-line"><span class="taco">Taco</span> <span class="tuesyay">Tuesyay!</span></h1>
+  <p class="title-sub">Order Now</p>
+</section>
+
+<section class="menu">
+  <div class="menu-row">
+    <div class="menu-img"><img src="men1.jpeg"></div>
+    <div class="menu-img"><img src="men2.jpeg"></div>
+    <div class="menu-img"><img src="men3.jpeg"></div>
+  </div>
+  <div class="menu-row">
+    <div class="menu-img"><img src="men4.jpeg"></div>
+    <div class="menu-img"><img src="men5.jpeg"></div>
+  </div>
+</section>
+
+<div class="info-line">
+  Order Cutoff: Sunday 10 PM &bull; Tuesday Delivery Only
+</div>
+
+<div class="main-row">
+<div class="preorder-box">
+
+<h2>Taco Tuesday Pre-Order</h2>
+<p class="sub-tag">Pre-order only · Payment required</p>
+
+<p class="how-it-works">
+DM us with the following details.  
+Delivery is booked by the customer.
+</p>
+
+<ul class="fields">
+  <li class="label">Name</li><li class="desc">Full name</li>
+  <li class="label">Mobile</li><li class="desc">Contact number</li>
+  <li class="label">Order</li><li class="desc">Menu item + quantity</li>
+  <li class="label">Delivery</li><li class="desc">You book the courier (Tuesday only)</li>
+  <li class="label">Address</li><li class="desc">For delivery reference</li>
+  <li class="label">Payment</li><li class="desc">Required upon ordering</li>
+  <li class="label">Proof</li><li class="desc">Screenshot of payment</li>
+</ul>
+
+<div class="divider"></div>
+
+<p class="note">
+<strong>Orders are confirmed only after payment.</strong><br>
+Cutoff is strictly Sunday 10 PM.
+</p>
+
+<div class="divider"></div>
+
+<div class="dm-section">
+<span class="dm-label">DM us here →</span>
+<div class="dm-links">
+
+<!-- TikTok -->
+<a class="dm-icon" href="https://www.tiktok.com/@sira.ulo.kitchen" target="_blank">
+<svg viewBox="0 0 24 24" fill="white"><path d="M19.59 6.69a4.83..."/></svg>
+</a>
+
+<!-- WhatsApp -->
+<a class="dm-icon" href="https://wa.me/639602735577" target="_blank">
+<svg viewBox="0 0 24 24" fill="#25D366"><path d="M20.04 4.96..."/></svg>
+</a>
+
+<!-- Messenger → TikTok -->
+<a class="dm-icon" href="https://www.tiktok.com/@sira.ulo.kitchen" target="_blank">
+<svg viewBox="0 0 24 24" fill="white"><path d="M12 2C6.48..."/></svg>
+</a>
+
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+</body>
+</html>
