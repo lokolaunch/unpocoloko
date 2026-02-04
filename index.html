@@ -7,182 +7,246 @@
 <link href="https://fonts.googleapis.com/css2?family=Bangers&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
 
 <style>
-/* ─── RESET & VARIABLES ─── */
-*, *::before, *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+  /* ─── RESET & VARIABLES ─── */
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
 
-:root {
-  --gold: #d4a843;
-  --gold-dim: rgba(212, 168, 67, 0.35);
-  --black: #000000; 
-  --white: #f0ece4;
-  --cream: #c9c0a8;
-  --gold-glow: rgba(212, 168, 67, 0.18);
-  --font-display: 'Bangers', cursive;
-  --font-body: 'DM Sans', sans-serif;
-}
+  :root {
+    --gold: #d4a843;
+    --gold-dim: rgba(212, 168, 67, 0.35);
+    --black: #000000; 
+    --white: #f0ece4;
+    --cream: #c9c0a8;
+    --gold-glow: rgba(212, 168, 67, 0.18);
+    --font-display: 'Bangers', cursive;
+    --font-body: 'DM Sans', sans-serif;
+  }
 
-html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; }
 
-body {
-  background: var(--black);
-  color: var(--white);
-  font-family: var(--font-body);
-  min-height: 100vh;
-  overflow-x: hidden;
-}
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: var(--font-body);
+    min-height: 100vh;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
 
-/* ─── GRAIN ─── */
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
-  pointer-events: none;
-  z-index: 999;
-  opacity: 0.6;
-}
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 999;
+    opacity: 0.6;
+  }
 
-/* ─── LAYOUT ─── */
-.page {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 48px 24px 72px;
-  position: relative;
-  z-index: 1;
-}
+  .page {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 48px 24px 72px;
+    position: relative;
+    z-index: 1;
+  }
 
-/* ─── TOP ─── */
-.top {
-  text-align: center;
-  margin-bottom: 48px;
-}
+  .top { text-align: center; margin-bottom: 48px; }
 
-.logo-wrap img {
-  width: 190px;
-  display: block;
-  margin: 0 auto 28px;
-}
+  .logo-wrap { margin-bottom: 28px; }
 
-/* ─── TITLE ─── */
-.title-line {
-  font-family: var(--font-display);
-  font-size: clamp(52px, 10vw, 88px);
-  letter-spacing: 2px;
-  line-height: 1.05;
-  text-transform: uppercase;
-}
+  .logo-wrap img {
+    width: 190px;
+    display: block;
+    margin: 0 auto;
+  }
 
-.title-line .taco {
-  color: var(--white);
-  display: inline-block;
-  animation: tiltBob 3s ease-in-out infinite;
-}
+  .title-line {
+    font-family: var(--font-display);
+    font-size: clamp(52px, 10vw, 88px);
+    letter-spacing: 2px;
+    line-height: 1.05;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
 
-.title-line .tuesyay {
-  color: var(--gold);
-  display: inline-block;
-  animation: tiltBob 3s ease-in-out 0.35s infinite;
-}
+  .title-line .taco {
+    color: var(--white);
+    display: inline-block;
+    animation: tiltBob 3s ease-in-out infinite;
+  }
 
-.title-sub {
-  font-size: clamp(16px, 3.2vw, 22px);
-  color: var(--cream);
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  margin-top: 10px;
-  animation: fadeUp 0.9s cubic-bezier(0.22,1,0.36,1) 0.3s both;
-}
+  .title-line .tuesyay {
+    color: var(--gold);
+    display: inline-block;
+    animation: tiltBob 3s ease-in-out 0.35s infinite;
+  }
 
-@keyframes tiltBob {
-  0%,100% { transform: translateY(0) rotate(0); }
-  30% { transform: translateY(-5px) rotate(-1.2deg); }
-  60% { transform: translateY(-2px) rotate(0.8deg); }
-}
+  .title-sub {
+    font-size: clamp(16px, 3.2vw, 22px);
+    font-weight: 500;
+    color: var(--cream);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    opacity: 0.82;
+    margin-top: 10px;
+    animation: fadeUp 0.9s cubic-bezier(0.22,1,0.36,1) 0.3s both;
+  }
 
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(14px); }
-  to { opacity: .82; transform: translateY(0); }
-}
+  @keyframes tiltBob {
+    0%,100% { transform: translateY(0) rotate(0deg); }
+    30% { transform: translateY(-5px) rotate(-1.2deg); }
+    60% { transform: translateY(-2px) rotate(0.8deg); }
+  }
 
-/* ─── MENU (UNCHANGED) ─── */
-.menu {
-  text-align: center;
-  margin-bottom: 36px;
-}
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 0.82; transform: translateY(0); }
+  }
 
-.menu-row {
-  display: flex;
-  justify-content: center;
-  gap: 18px;
-  flex-wrap: wrap;
-  margin-bottom: 22px;
-}
+  .menu { text-align: center; margin-bottom: 36px; }
 
-.menu-img {
-  border: 2px solid var(--gold);
-  border-radius: 10px;
-  overflow: hidden;
-}
+  .menu-row {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    flex-wrap: wrap;
+    margin-bottom: 22px;
+  }
 
-.menu-img img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
+  .row-1, .row-2 { flex-wrap: nowrap; }
 
-/* ─── INFO LINE ─── */
-.info-line {
-  text-align: center;
-  font-size: 15px;
-  color: var(--cream);
-  letter-spacing: 1.8px;
-  text-transform: uppercase;
-  margin-bottom: 52px;
-  padding: 14px 0;
-  border-top: 1px solid var(--gold-dim);
-  border-bottom: 1px solid var(--gold-dim);
-}
+  .menu-row .menu-img {
+    border: 2px solid var(--gold);
+    border-radius: 10px;
+    overflow: hidden;
+    background: var(--black);
+    box-shadow: 0 0 14px var(--gold-glow);
+    transition: box-shadow .35s, transform .35s;
+  }
 
-/* ─── PREORDER BOX (CONTENT ONLY EDITED) ─── */
-.main-row { display: flex; justify-content: center; }
+  .menu-row .menu-img:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 24px var(--gold-dim);
+  }
 
-.preorder-box {
-  width: 100%;
-  max-width: 800px;
-  border: 2px solid var(--gold);
-  padding: 32px 36px;
-}
+  .menu-row img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
 
-.fields {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
+  .info-line {
+    text-align: center;
+    font-size: 15px;
+    color: var(--cream);
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    opacity: 0.75;
+    margin-bottom: 52px;
+    padding: 14px 0;
+    border-top: 1px solid var(--gold-dim);
+    border-bottom: 1px solid var(--gold-dim);
+  }
 
-.fields li {
-  display: flex;
-  gap: 12px;
-}
+  .main-row { display: flex; justify-content: center; }
 
-.label {
-  min-width: 140px;
-  color: var(--gold);
-  font-size: 13px;
-  text-transform: uppercase;
-  font-weight: 600;
-}
+  .preorder-box {
+    width: 100%;
+    max-width: 800px;
+    border: 2px solid var(--gold);
+    background: var(--black);
+    box-shadow: 0 0 20px var(--gold-glow);
+    padding: 32px 36px;
+  }
 
-.desc { color: var(--cream); font-size: 14px; }
+  .preorder-box h2 {
+    font-family: var(--font-display);
+    font-size: 26px;
+    color: var(--gold);
+    text-align: center;
+  }
 
-/* ─── MOBILE ─── */
-@media (max-width: 720px) {
-  .label { min-width: 110px; font-size: 12px; }
-}
+  .sub-tag {
+    font-size: 12px;
+    color: var(--cream);
+    opacity: .6;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .how-it-works {
+    font-size: 13px;
+    color: var(--cream);
+    opacity: .7;
+    text-align: center;
+    margin-bottom: 16px;
+    font-style: italic;
+  }
+
+  .fields {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .fields li {
+    display: flex;
+    gap: 12px;
+    font-size: 15px;
+  }
+
+  .label {
+    min-width: 130px;
+    color: var(--gold);
+    font-size: 13px;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  .desc { color: var(--cream); font-size: 14px; }
+
+  .divider {
+    height: 1px;
+    background: var(--gold-dim);
+    margin: 12px 0 16px;
+  }
+
+  .note {
+    font-size: 13px;
+    color: var(--cream);
+    opacity: .58;
+    text-align: center;
+  }
+
+  .dm-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    margin-top: 10px;
+  }
+
+  .dm-links { display: flex; gap: 16px; }
+
+  .dm-icon {
+    width: 42px;
+    height: 42px;
+    border: 1.5px solid var(--gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  @media (max-width: 720px) {
+    .preorder-box { padding: 24px 20px; }
+    .label { min-width: 110px; font-size: 12px; }
+  }
 </style>
 </head>
 
@@ -190,27 +254,35 @@ body::before {
 <div class="page">
 
 <section class="top">
-  <div class="logo-wrap"><img src="logo.png"></div>
+  <div class="logo-wrap"><img src="logo.png" /></div>
   <h1 class="title-line"><span class="taco">Taco</span> <span class="tuesyay">Tuesyay!</span></h1>
   <p class="title-sub">Order Now</p>
 </section>
 
 <section class="menu">
-  <div class="menu-row">
+  <div class="menu-row row-1">
     <div class="menu-img"><img src="men1.jpeg"></div>
     <div class="menu-img"><img src="men2.jpeg"></div>
     <div class="menu-img"><img src="men3.jpeg"></div>
   </div>
-  <div class="menu-row">
+  <div class="menu-row row-2">
     <div class="menu-img"><img src="men4.jpeg"></div>
     <div class="menu-img"><img src="men5.jpeg"></div>
   </div>
 </section>
 
-<div class="info-line">Order Cutoff: Sunday 10 PM • Tuesday Delivery Only</div>
+<div class="info-line">Order Cutoff: Sunday 10 PM • Tuesday Delivery</div>
 
 <div class="main-row">
 <div class="preorder-box">
+
+<h2>Taco Tuesday Pre-Order</h2>
+<p class="sub-tag">Pre-order only · Payment required</p>
+
+<p class="how-it-works">
+DM us on any of our socials with the following details.
+<br><strong>You book the delivery.</strong>
+</p>
 
 <ul class="fields">
   <li><span class="label">Name</span><span class="desc">Full name</span></li>
@@ -222,6 +294,24 @@ body::before {
   <li><span class="label">Payment</span><span class="desc">Required upon order</span></li>
   <li><span class="label">Proof</span><span class="desc">Screenshot of payment</span></li>
 </ul>
+
+<div class="divider"></div>
+
+<p class="note">
+<strong>Orders confirmed only after payment.</strong><br />
+Final amount will be sent by us.
+</p>
+
+<div class="divider"></div>
+
+<div class="dm-section">
+  <span class="dm-label">DM us here →</span>
+  <div class="dm-links">
+    <a href="https://www.tiktok.com/@sira.ulo.kitchen" target="_blank" class="dm-icon">TikTok</a>
+    <a href="https://wa.me/639602735577" target="_blank" class="dm-icon">WhatsApp</a>
+    <a href="https://www.tiktok.com/@sira.ulo.kitchen" target="_blank" class="dm-icon">Messenger</a>
+  </div>
+</div>
 
 </div>
 </div>
