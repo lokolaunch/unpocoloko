@@ -127,11 +127,11 @@ body {
   margin-bottom: 20px;
 }
 
-/* FIXED ALIGNMENT */
+/* CLEAN ALIGNMENT */
 .fields {
   list-style: none;
   display: grid;
-  grid-template-columns: 140px 1fr;
+  grid-template-columns: 150px 1fr;
   row-gap: 10px;
   column-gap: 14px;
   margin-bottom: 22px;
@@ -176,29 +176,35 @@ body {
 .dm-links {
   display: flex;
   justify-content: center;
-  gap: 16px;
-  margin-top: 10px;
+  gap: 18px;
+  margin-top: 12px;
 }
 
 .dm-icon {
-  width: 42px;
-  height: 42px;
+  width: 44px;
+  height: 44px;
   border: 1.5px solid var(--gold);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.dm-icon:hover {
+  transform: scale(1.12);
+  box-shadow: 0 0 14px rgba(212,168,67,.4);
 }
 
 .dm-icon svg {
-  width: 20px;
-  height: 20px;
+  width: 22px;
+  height: 22px;
 }
 
 /* MOBILE */
 @media (max-width: 720px) {
   .fields {
-    grid-template-columns: 110px 1fr;
+    grid-template-columns: 120px 1fr;
   }
 }
 </style>
@@ -211,7 +217,9 @@ body {
   <div class="logo-wrap">
     <img src="logo.png" alt="Sira Ulo Kitchen">
   </div>
-  <h1 class="title-line"><span class="taco">Taco</span> <span class="tuesyay">Tuesyay!</span></h1>
+  <h1 class="title-line">
+    <span class="taco">Taco</span> <span class="tuesyay">Tuesyay!</span>
+  </h1>
   <p class="title-sub">Order Now</p>
 </section>
 
@@ -239,22 +247,16 @@ body {
 
 <p class="how-it-works">
 DM us with the following details.  
-Delivery is booked by the customer.
+<strong>You book the delivery.</strong>
 </p>
 
 <ul class="fields">
   <li class="label">Name</li><li class="desc">Full name</li>
   <li class="label">Mobile</li><li class="desc">Contact number</li>
   <li class="label">Order</li><li class="desc">Menu item + quantity</li>
-<li class="label">Delivery Time</li>
-<li class="desc">Preferred time on Tuesday</li>
-
-<li class="label">Delivery Method</li>
-<li class="desc">Grab / Lalamove / Pick-up</li>
-
-<li class="label">Tracking No.</li>
-<li class="desc">If already available</li>
-
+  <li class="label">Delivery Time</li><li class="desc">Preferred time on Tuesday</li>
+  <li class="label">Delivery Method</li><li class="desc">Grab / Lalamove / Pick-up</li>
+  <li class="label">Tracking No.</li><li class="desc">If already available</li>
   <li class="label">Payment</li><li class="desc">Required upon ordering</li>
   <li class="label">Proof</li><li class="desc">Screenshot of payment</li>
 </ul>
@@ -270,21 +272,36 @@ Cutoff is strictly Sunday 10 PM.
 
 <div class="dm-section">
 <span class="dm-label">DM us here →</span>
+
 <div class="dm-links">
 
 <!-- TikTok -->
-<a class="dm-icon" href="https://www.tiktok.com/@sira.ulo.kitchen" target="_blank">
-<svg viewBox="0 0 24 24" fill="white"><path d="M19.59 6.69a4.83..."/></svg>
+<a class="dm-icon" href="https://www.tiktok.com/@sira.ulo.kitchen" target="_blank" title="TikTok">
+<svg viewBox="0 0 24 24" fill="#ffffff">
+<path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.27 6.27 0 00-6.27 6.27 6.27 6.27 0 006.27 6.27 6.27 6.27 0 006.27-6.27V8.92a8.16 8.16 0 004.83 1.57V7.06a4.83 4.83 0 01-1-.37z"/>
+</svg>
 </a>
 
 <!-- WhatsApp -->
-<a class="dm-icon" href="https://wa.me/639602735577" target="_blank">
-<svg viewBox="0 0 24 24" fill="#25D366"><path d="M20.04 4.96..."/></svg>
+<a class="dm-icon" href="https://wa.me/639602735577" target="_blank" title="WhatsApp">
+<svg viewBox="0 0 24 24">
+<path fill="#25D366" d="M20.04 4.96A10.01 10.01 0 0012 2 9.96 9.96 0 002.01 12c0 1.76.46 3.4 1.34 4.85L2 22l5.3-1.39A9.93 9.93 0 0012 22c5.52 0 10-4.48 10-10 0-2.67-1.04-5.18-2.96-7.04z"/>
+<path fill="#ffffff" d="M16.56 14.12c-.24-.12-1.4-.69-1.62-.77-.21-.08-.37-.12-.52.13-.16.24-.61.77-.75.92-.14.15-.27.17-.5.06-.24-.12-1-.37-1.91-.91-.71-.48-1.19-1.07-1.33-1.25-.14-.18-.01-.28.1-.37.1-.08.23-.21.34-.32.11-.11.15-.18.23-.35.08-.17.04-.31-.02-.43-.06-.12-.52-1.25-.71-1.71-.19-.45-.38-.39-.52-.4h-.45c-.15 0-.39.06-.59.28-.2.23-.77.75-.77 1.83s.8 2.13.91 2.28c.11.15 1.6 2.45 3.88 3.44 2.28.99 2.28.66 2.69.64.4-.02 1.3-.53 1.49-1.04.18-.51.18-.94.13-1.04-.06-.1-.22-.16-.46-.28z"/>
+</svg>
 </a>
 
 <!-- Messenger → TikTok -->
-<a class="dm-icon" href="https://www.tiktok.com/@sira.ulo.kitchen" target="_blank">
-<svg viewBox="0 0 24 24" fill="white"><path d="M12 2C6.48..."/></svg>
+<a class="dm-icon" href="https://www.tiktok.com/@sira.ulo.kitchen" target="_blank" title="Messenger">
+<svg viewBox="0 0 24 24">
+<defs>
+<linearGradient id="msgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+<stop offset="0%" stop-color="#00B2FF"/>
+<stop offset="100%" stop-color="#006AFF"/>
+</linearGradient>
+</defs>
+<path fill="url(#msgGrad)" d="M12 2C6.48 2 2 6.48 2 12c0 2.88 1.33 5.47 3.4 7.17V22l2.05-1.12C8.87 21.59 10.41 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2z"/>
+<path fill="#ffffff" d="M13.12 15.28L10.6 12.6 5.6 15.28l5.5-5.84 2.6 2.68 4.9-2.68-5.48 5.84z"/>
+</svg>
 </a>
 
 </div>
